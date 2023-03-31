@@ -9,7 +9,13 @@ export function markedHighlight(options) {
     throw new Error('Must provide highlight function');
   }
 
-  const extension = {
+  if (typeof options.langPrefix !== 'string') {
+    options.langPrefix = 'language-';
+  }
+
+  return {
+    async: !!options.async,
+    langPrefix: options.langPrefix,
     walkTokens(token) {
       if (token.type !== 'code') {
         return;
@@ -23,18 +29,18 @@ export function markedHighlight(options) {
 
       const code = options.highlight(token.text, lang);
       updateToken(token)(code);
+    },
+    renderer: {
+      code(code, infoString, escaped) {
+        const lang = (infoString || '').match(/\S*/)[0];
+        const classAttr = lang
+          ? ` class="${this.options.langPrefix}${escape(lang)}"`
+          : '';
+        code = code.replace(/\n$/, '');
+        return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
+      }
     }
   };
-
-  if (options.async) {
-    extension.async = true;
-  }
-
-  if (typeof options.langPrefix === 'string') {
-    extension.langPrefix = options.langPrefix;
-  }
-
-  return extension;
 }
 
 function getLang(token) {
@@ -48,4 +54,31 @@ function updateToken(token) {
       token.text = code;
     }
   };
+}
+
+// copied from marked helpers
+const escapeTest = /[&<>"']/;
+const escapeReplace = new RegExp(escapeTest.source, 'g');
+const escapeTestNoEncode = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/;
+const escapeReplaceNoEncode = new RegExp(escapeTestNoEncode.source, 'g');
+const escapeReplacements = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+};
+const getEscapeReplacement = (ch) => escapeReplacements[ch];
+export function escape(html, encode) {
+  if (encode) {
+    if (escapeTest.test(html)) {
+      return html.replace(escapeReplace, getEscapeReplacement);
+    }
+  } else {
+    if (escapeTestNoEncode.test(html)) {
+      return html.replace(escapeReplaceNoEncode, getEscapeReplacement);
+    }
+  }
+
+  return html;
 }
