@@ -1,14 +1,15 @@
 {
-  "name": "marked-extension-template",
+  "name": "marked-highlight",
   "version": "0.0.0",
-  "description": "marked extension template",
+  "description": "marked highlight",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
   "type": "module",
   "keywords": [
     "marked",
-    "extension"
+    "extension",
+    "highlight"
   ],
   "files": [
     "lib/",
@@ -28,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markedjs/marked-extension-template.git"
+    "url": "git+https://github.com/markedjs/marked-highlight.git"
   },
   "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markedjs/marked-extension-template/issues"
+    "url": "https://github.com/markedjs/marked-highlight/issues"
   },
-  "homepage": "https://github.com/markedjs/marked-extension-template#readme",
+  "homepage": "https://github.com/markedjs/marked-highlight#readme",
   "peerDependencies": {
     "marked": "^4.3.0"
   },
@@ -54,8 +55,10 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
+    "highlight.js": "^11.7.0",
     "jest-cli": "^29.5.0",
     "marked": "^4.3.0",
+    "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.20.2",
     "semantic-release": "^21.0.0"
   }
