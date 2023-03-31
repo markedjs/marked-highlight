@@ -29,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markedjs/marked-highlight.git"
+    "url": "git+https://github.com/UziTech/marked-highlight.git"
   },
   "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markedjs/marked-highlight/issues"
+    "url": "https://github.com/UziTech/marked-highlight/issues"
   },
-  "homepage": "https://github.com/markedjs/marked-highlight#readme",
+  "homepage": "https://github.com/UziTech/marked-highlight#readme",
   "peerDependencies": {
     "marked": "^4.3.0"
   },
