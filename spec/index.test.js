@@ -21,8 +21,8 @@ const highlight = "code";
 
   test('no function', () => {
     expect(() => {
-    marked.use(markedHighlight());
-    }).toThrow("Must provide highlight function");
+      marked.use(markedHighlight());
+    }).toThrow('Must provide highlight function');
   });
 
   test('return null', () => {
@@ -41,7 +41,7 @@ const highlight = "code";
 
   test('function', () => {
     marked.use(markedHighlight((code, lang) => {
-      return `<mycode>${code}</mycode>`
+      return `<mycode>${code}</mycode>`;
     }));
     expect(marked(markdown)).toMatchInlineSnapshot(`
 "<h1 id="header">header</h1>
@@ -71,12 +71,12 @@ const highlight = "code";
 `);
   });
 
-  test('async', async () => {
+  test('async', async() => {
     marked.use(markedHighlight({
       async: true,
       highlight(code, lang) {
         return new Promise((resolve, reject) => {
-          pygmentize({ lang, format: 'html' }, code, function (err, result) {
+          pygmentize({ lang, format: 'html' }, code, function(err, result) {
             if (err) {
               resolve(err);
               return;

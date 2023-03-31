@@ -5,8 +5,8 @@ export function markedHighlight(options) {
     };
   }
 
-  if (!options || typeof options.highlight !== "function") {
-    throw new Error("Must provide highlight function");
+  if (!options || typeof options.highlight !== 'function') {
+    throw new Error('Must provide highlight function');
   }
 
   const extension = {
@@ -30,7 +30,7 @@ export function markedHighlight(options) {
     extension.async = true;
   }
 
-  if (typeof options.langPrefix === "string") {
+  if (typeof options.langPrefix === 'string') {
     extension.langPrefix = options.langPrefix;
   }
 
