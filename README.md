@@ -16,11 +16,11 @@ import hljs from 'highlight.js';
 // <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
 
 marked.use(markedHighlight({
-	langPrefix: 'hljs language-',
-	highlight(code, lang) {
-		const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-		return hljs.highlight(code, { language }).value;
-	}
+  langPrefix: 'hljs language-',
+  highlight(code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    return hljs.highlight(code, { language }).value;
+  }
 }));
 
 marked.parse(`
@@ -41,19 +41,19 @@ import {markedHighlight} from "marked-highlight";
 import pygmentize from 'pygmentize-bundled';
 
 marked.use(markedHighlight({
-	async: true,
-	highlight(code, lang) {
-		return new Promise((resolve, reject) => {
-			pygmentize({ lang, format: 'html' }, code, function (err, result) {
-				if (err) {
-					resolve(err);
-					return;
-				}
+  async: true,
+  highlight(code, lang) {
+    return new Promise((resolve, reject) => {
+      pygmentize({ lang, format: 'html' }, code, function (err, result) {
+        if (err) {
+          resolve(err);
+          return;
+        }
 
-				resolve(result.toString());
-			});
-		});
-	}
+        resolve(result.toString());
+      });
+    });
+  }
 }));
 
 marked.parse(`
