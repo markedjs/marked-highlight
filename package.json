@@ -60,6 +60,6 @@
     "marked": "^4.3.0",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.20.2",
-    "semantic-release": "^21.0.0"
+    "semantic-release": "^21.0.1"
   }
 }
