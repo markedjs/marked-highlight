@@ -1,6 +1,6 @@
 {
   "name": "marked-highlight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "marked highlight",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
