@@ -11,6 +11,12 @@ const highlight = "code";
 `;
   beforeEach(() => {
     marked.setOptions(marked.getDefaults());
+    // remove deprecation warnings
+    marked.use({
+      langPrefix: '',
+      mangle: false,
+      headerIds: false
+    });
   });
 
   test('excape lang', () => {
@@ -38,7 +44,7 @@ don't do this
 code
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<h1 id="header">header</h1>
+"<h1>header</h1>
 <pre><code class="language-js"><mycode>code</mycode>
 </code></pre>"
 `);

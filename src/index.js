@@ -15,7 +15,7 @@ export function markedHighlight(options) {
 
   return {
     async: !!options.async,
-    langPrefix: options.langPrefix,
+    langPrefix: '',
     walkTokens(token) {
       if (token.type !== 'code') {
         return;
@@ -34,7 +34,7 @@ export function markedHighlight(options) {
       code(code, infoString, escaped) {
         const lang = (infoString || '').match(/\S*/)[0];
         const classAttr = lang
-          ? ` class="${this.options.langPrefix}${escape(lang)}"`
+          ? ` class="${options.langPrefix}${escape(lang)}"`
           : '';
         code = code.replace(/\n$/, '');
         return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
