@@ -15,7 +15,6 @@ export function markedHighlight(options) {
 
   return {
     async: !!options.async,
-    langPrefix: '',
     walkTokens(token) {
       if (token.type !== 'code') {
         return;

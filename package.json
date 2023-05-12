@@ -57,7 +57,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "highlight.js": "^11.8.0",
     "jest-cli": "^29.5.0",
-    "marked": "^5.0.1",
+    "marked": "^5.0.2",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.21.5",
     "semantic-release": "^21.0.2"
