@@ -13,7 +13,6 @@ const highlight = "code";
     marked.setOptions(marked.getDefaults());
     // remove deprecation warnings
     marked.use({
-      langPrefix: '',
       mangle: false,
       headerIds: false
     });
