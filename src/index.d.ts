@@ -68,13 +68,4 @@ declare module 'marked-highlight' {
   export function markedHighlight(
     highlightFunction: SyncHighlightFunction
   ): import('marked').MarkedExtension;
-
-  /**
-   * Encode special characters (ampersands, angle brackets, and quotes) in code as their respective HTML entities
-   * 
-   * @param code The code to be encoded
-   * @param encode If true, blindly encodes all ampersands. If false, uses a more complicate regex to avoid re-encoding the ampersand at the start of existing HTML entities in the code
-   * @return The code with the special characters encoded.
-   */
-  export function encode(code: string, encode: boolean): string;
 }
