@@ -161,7 +161,7 @@ no need to escape chars
         });
       }
     }));
-    expect(await marked(markdown, { async: true })).toMatchInlineSnapshot(`
+    expect(await marked(markdown)).toMatchInlineSnapshot(`
 "<pre><code class="language-javascript"><div class="highlight"><pre><span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="s2">&quot;code&quot;</span><span class="p">;</span>
 </pre></div>
 </code></pre>"

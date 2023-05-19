@@ -3,7 +3,8 @@ declare module 'marked-highlight' {
    * A synchronous function to highlight code
    *
    * @param code The raw code to be highlighted
-   * @param language The language tag found immediately after the code block opening marker (e.g. ```typescript -> language='typescript')
+   * @param language The language tag found immediately after the code block
+   *   opening marker (e.g. ```typescript -> language='typescript')
    * @return The highlighted code as a HTML string
    */
   type SyncHighlightFunction = (code: string, language: string) => string;
@@ -12,34 +13,49 @@ declare module 'marked-highlight' {
    * An asynchronous function to highlight code
    *
    * @param code The raw code to be highlighted
-   * @param language The language tag found immediately after the code block opening marker (e.g. ```typescript -> language='typescript')
+   * @param language The language tag found immediately after the code block
+   *   opening marker (e.g. ```typescript -> language='typescript')
    * @return A Promise for the highlighted code as a HTML string
    */
   type AsyncHighlightFunction = (code: string, language: string) => Promise<string>;
 
   /**
-   * Options for configuring the marked-highlight extension using a synchronous highlighting function.
+   * Options for configuring the marked-highlight extension using a synchronous
+   * highlighting function.
    */
   interface SynchronousOptions {
     /** Function to highlight code with */
     highlight: SyncHighlightFunction;
-    /** Not necessary when using a synchronous highlighting function, but can be set without harm (will make `marked.parse()` return a promise if true) */
+    /**
+     * Not necessary when using a synchronous highlighting function, but can be
+     * set without harm (it will make `marked.parse()` return a promise if true;
+     * pass the {async: true} option to marked.parse() to tell TypeScript this)
+     */
     async?: boolean;
-    /** The language tag found immediately after the code block opening marker is appended to this to form the class attribute added to the <code> element. */
+    /**
+     * The language tag found immediately after the code block opening marker is
+     * appended to this to form the class attribute added to the <code> element.
+     */
     langPrefix?: string;
   }
 
   /**
-   * Options for configuring the marked-highlight extension using an asynchronous highlighting function.
+   * Options for configuring the marked-highlight extension using an
+   * asynchronous highlighting function.
    * 
-   * Note that the {async: true} option must also be passed to markdown.parse() when using an asynchronous highlighting function.
+   * Note that the {async: true} option should also be passed to marked.parse()
+   * when using an asynchronous highlighting function to tell TypeScript that it
+   * will return a Promise.
    */
   interface AsynchronousOptions {
     /** Function to highlight code with */
     highlight: AsyncHighlightFunction;
     /** Must be set to true when using an asynchronous highlight function */
     async: true;
-    /** The language tag found immediately after the code block opening marker is appended to this to form the class attribute added to the <code> element. */
+    /**
+     * The language tag found immediately after the code block opening marker is
+     * appended to this to form the class attribute added to the <code> element.
+     */
     langPrefix?: string;
   }
 
