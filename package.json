@@ -5,6 +5,7 @@
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
+  "types": "./src/index.d.ts",
   "type": "module",
   "keywords": [
     "marked",
@@ -49,6 +50,7 @@
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^10.0.3",
     "@semantic-release/release-notes-generator": "^11.0.1",
+    "@types/marked": "^4.3.0",
     "babel-jest": "^29.5.0",
     "eslint": "^8.40.0",
     "eslint-config-standard": "^17.0.0",
