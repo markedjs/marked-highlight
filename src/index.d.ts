@@ -65,7 +65,7 @@ declare module 'marked-highlight' {
    * @param options Options for the extension
    * @return A MarkedExtension to be passed to `marked.use()`
    */
-  export function markedHighlight(options: SynchronousOptions): import('marked').MarkedExtension;
+  export function markedHighlight(options: SynchronousOptions): import('marked').marked.MarkedExtension;
 
   /**
    * Configures a marked extension to apply syntax highlighing to code elements.
@@ -73,7 +73,7 @@ declare module 'marked-highlight' {
    * @param options Options for the extension
    * @return A MarkedExtension to be passed to `marked.use()`
    */
-  export function markedHighlight(options: AsynchronousOptions): import('marked').MarkedExtension;
+  export function markedHighlight(options: AsynchronousOptions): import('marked').marked.MarkedExtension;
 
   /**
    * Configures a marked extension to apply syntax highlighing to code elements.
@@ -83,5 +83,5 @@ declare module 'marked-highlight' {
    */
   export function markedHighlight(
     highlightFunction: SyncHighlightFunction
-  ): import('marked').MarkedExtension;
+  ): import('marked').marked.MarkedExtension;
 }
