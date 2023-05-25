@@ -21,6 +21,20 @@ jobs:
       - name: Run Tests 👩🏽‍💻
         run: npm run test
 
+  TestTypes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '*'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Types Tests 👩🏽‍💻
+        run: npm run test:types
+
   Coverage:
     runs-on: ubuntu-latest
     steps:
@@ -64,7 +78,7 @@ jobs:
         run: npm run build
 
   Release:
-    needs: [Test, Coverage, Lint, Build]
+    needs: [Test, TestTypes, Coverage, Lint, Build]
     if: |
       github.ref == 'refs/heads/main' &&
       github.event.repository.fork == false

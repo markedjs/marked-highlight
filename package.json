@@ -25,6 +25,7 @@
   "scripts": {
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
+    "test:types": "tsd -t src/index.d.ts -f types_test/index.test-d.ts",
     "lint": "eslint .",
     "build": "rollup -c rollup.config.js"
   },
@@ -62,6 +63,14 @@
     "marked": "^5.0.2",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.23.0",
-    "semantic-release": "^21.0.2"
+    "semantic-release": "^21.0.2",
+    "tsd": "^0.28.1"
+  },
+  "tsd": {
+    "compilerOptions": {
+      "paths": {
+        "marked-highlight": ["./src"]
+      }
+    }
   }
 }
