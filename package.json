@@ -53,7 +53,7 @@
     "@semantic-release/release-notes-generator": "^11.0.2",
     "@types/marked": "^5.0.0",
     "babel-jest": "^29.5.0",
-    "eslint": "^8.41.0",
+    "eslint": "^8.42.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
