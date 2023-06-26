@@ -14,7 +14,7 @@ import hljs from 'highlight.js';
 // or UMD script
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 // <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
-// const {markedHighlight} = this.markedHighlight;
+// const {markedHighlight} = globalThis.markedHighlight;
 marked.use(markedHighlight({
   langPrefix: 'hljs language-',
   highlight(code, lang) {
