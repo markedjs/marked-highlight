@@ -7,7 +7,7 @@ Highlight code blocks
 You will need to provide a function that transforms the `code` to html.
 
 ```js
-import {marked} from "marked";
+import {Marked} from "marked";
 import {markedHighlight} from "marked-highlight";
 import hljs from 'highlight.js';
 
@@ -15,13 +15,16 @@ import hljs from 'highlight.js';
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 // <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
 // const {markedHighlight} = globalThis.markedHighlight;
-marked.use(markedHighlight({
-  langPrefix: 'hljs language-',
-  highlight(code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
-  }
-}));
+const marked = new Marked(
+  markedHighlight({
+    langPrefix: 'hljs language-',
+    highlight(code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    }
+  })
+);
+
 
 marked.parse(`
 \`\`\`javascript
@@ -36,25 +39,27 @@ const highlight = "code";
 The `async` option should be set to `true` if the `highlight` function returns a `Promise`.
 
 ```js
-import {marked} from "marked";
+import {Marked} from "marked";
 import {markedHighlight} from "marked-highlight";
 import pygmentize from 'pygmentize-bundled';
 
-marked.use(markedHighlight({
-  async: true,
-  highlight(code, lang) {
-    return new Promise((resolve, reject) => {
-      pygmentize({ lang, format: 'html' }, code, function (err, result) {
-        if (err) {
-          resolve(err);
-          return;
-        }
+const marked = new Marked(
+  markedHighlight({
+    async: true,
+    highlight(code, lang) {
+      return new Promise((resolve, reject) => {
+        pygmentize({ lang, format: 'html' }, code, function (err, result) {
+          if (err) {
+            resolve(err);
+            return;
+          }
 
-        resolve(result.toString());
+          resolve(result.toString());
+        });
       });
-    });
-  }
-}));
+    }
+  })
+)
 
 marked.parse(`
 \`\`\`javascript
