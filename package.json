@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/markedjs/marked-highlight#readme",
   "peerDependencies": {
-    "marked": "^6.0.0"
+    "marked": "^4 || ^5 || ^6"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
