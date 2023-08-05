@@ -52,7 +52,7 @@
     "@semantic-release/npm": "^10.0.4",
     "@semantic-release/release-notes-generator": "^11.0.4",
     "@types/marked": "^5.0.1",
-    "babel-jest": "^29.6.1",
+    "babel-jest": "^29.6.2",
     "eslint": "^8.46.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
@@ -62,7 +62,7 @@
     "jest-cli": "^29.6.2",
     "marked": "^6.0.0",
     "pygmentize-bundled": "^2.3.0",
-    "rollup": "^3.27.0",
+    "rollup": "^3.27.2",
     "semantic-release": "^21.0.7",
     "tsd": "^0.28.1"
   },
