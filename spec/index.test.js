@@ -2,7 +2,6 @@ import { marked } from 'marked';
 import { markedHighlight } from '../src/index.js';
 import hljs from 'highlight.js';
 import pygmentize from 'pygmentize-bundled';
-import { expectError } from 'tsd';
 
 describe('markedHighlight', () => {
   const markdown = `
