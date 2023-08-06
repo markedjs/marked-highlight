@@ -2,6 +2,7 @@ import { marked } from 'marked';
 import { markedHighlight } from '../src/index.js';
 import hljs from 'highlight.js';
 import pygmentize from 'pygmentize-bundled';
+import { expectError } from 'tsd';
 
 describe('markedHighlight', () => {
   const markdown = `
@@ -166,5 +167,17 @@ no need to escape chars
 </pre></div>
 </code></pre>"
 `);
+  });
+
+  test('async highlight without async option', async() => {
+    marked.use(markedHighlight({
+      highlight(code, lang) {
+        return new Promise((resolve, reject) => {
+          resolve(code);
+        });
+      }
+    }));
+
+    expect(() => marked(markdown)).toThrow(/set the async option to true/i);
   });
 });
