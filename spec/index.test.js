@@ -11,11 +11,6 @@ const highlight = "code";
 `;
   beforeEach(() => {
     marked.setOptions(marked.getDefaults());
-    // remove deprecation warnings
-    marked.use({
-      mangle: false,
-      headerIds: false
-    });
   });
 
   test('excape lang', () => {
