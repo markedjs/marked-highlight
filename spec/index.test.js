@@ -162,4 +162,16 @@ no need to escape chars
 </code></pre>"
 `);
   });
+
+  test('async highlight without async option', async() => {
+    marked.use(markedHighlight({
+      highlight(code, lang) {
+        return new Promise((resolve, reject) => {
+          resolve(code);
+        });
+      }
+    }));
+
+    expect(() => marked(markdown)).toThrow(/set the async option to true/i);
+  });
 });
