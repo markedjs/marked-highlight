@@ -37,7 +37,7 @@ export function markedHighlight(options) {
         const lang = (infoString || '').match(/\S*/)[0];
         const classAttr = lang
           ? ` class="${options.langPrefix}${escape(lang)}"`
-          : '';
+          : ` class="${options.langPrefix}plaintext"`;
         code = code.replace(/\n$/, '');
         return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
       }
