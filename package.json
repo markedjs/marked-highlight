@@ -62,7 +62,7 @@
     "marked": "^7.0.2",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.28.0",
-    "semantic-release": "^21.0.7",
+    "semantic-release": "^21.0.9",
     "tsd": "^0.28.1"
   },
   "tsd": {
