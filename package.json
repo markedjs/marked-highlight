@@ -51,7 +51,7 @@
     "@semantic-release/github": "^9.0.4",
     "@semantic-release/npm": "^10.0.4",
     "@semantic-release/release-notes-generator": "^11.0.4",
-    "babel-jest": "^29.6.2",
+    "babel-jest": "^29.6.3",
     "eslint": "^8.47.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
