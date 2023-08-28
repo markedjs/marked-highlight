@@ -61,7 +61,7 @@
     "jest-cli": "^29.6.3",
     "marked": "^7.0.4",
     "pygmentize-bundled": "^2.3.0",
-    "rollup": "^3.28.0",
+    "rollup": "^3.28.1",
     "semantic-release": "^21.0.9",
     "tsd": "^0.28.1"
   },
