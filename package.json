@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/markedjs/marked-highlight#readme",
   "peerDependencies": {
-    "marked": "^4 || ^5 || ^6 || ^7"
+    "marked": ">=4 <9"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
@@ -59,11 +59,11 @@
     "eslint-plugin-promise": "^6.1.1",
     "highlight.js": "^11.8.0",
     "jest-cli": "^29.6.4",
-    "marked": "^7.0.5",
+    "marked": "^8.0.0",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^3.28.1",
     "semantic-release": "^21.0.9",
-    "tsd": "^0.28.1"
+    "tsd": "^0.29.0"
   },
   "tsd": {
     "compilerOptions": {
