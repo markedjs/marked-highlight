@@ -39,6 +39,7 @@ export function markedHighlight(options) {
           ? ` class="${options.langPrefix}${escape(lang)}"`
           : '';
         code = code.replace(/\n$/, '');
+        if (lang === "mermaid") return `<pre class="mermaid">${escaped ? code : escape(code, true)}</pre>`;
         return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
       }
     }
