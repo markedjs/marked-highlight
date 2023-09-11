@@ -43,7 +43,7 @@
     "marked": ">=4 <10"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.15",
+    "@babel/core": "^7.22.17",
     "@babel/preset-env": "^7.22.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^10.0.4",
