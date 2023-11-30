@@ -40,15 +40,15 @@
   },
   "homepage": "https://github.com/markedjs/marked-highlight#readme",
   "peerDependencies": {
-    "marked": ">=4 <11"
+    "marked": ">=4 <12"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.3",
+    "@semantic-release/github": "^9.2.4",
     "@semantic-release/npm": "^11.0.1",
     "@semantic-release/release-notes-generator": "^12.1.0",
     "babel-jest": "^29.7.0",
@@ -59,9 +59,9 @@
     "eslint-plugin-promise": "^6.1.1",
     "highlight.js": "^11.9.0",
     "jest-cli": "^29.7.0",
-    "marked": "^10.0.0",
+    "marked": "^11.0.0",
     "pygmentize-bundled": "^2.3.0",
-    "rollup": "^4.6.0",
+    "rollup": "^4.6.1",
     "semantic-release": "^22.0.8",
     "tsd": "^0.29.0"
   },
