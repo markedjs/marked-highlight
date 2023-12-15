@@ -20,7 +20,7 @@ export function markedHighlight(options) {
         return;
       }
 
-      const lang = getLang(token);
+      const lang = getLang(token.lang);
 
       if (options.async) {
         return Promise.resolve(options.highlight(token.text, lang, token.lang || '')).then(updateToken(token));
@@ -34,7 +34,7 @@ export function markedHighlight(options) {
     },
     renderer: {
       code(code, infoString, escaped) {
-        const lang = (infoString || '').match(/\S*/)[0];
+        const lang = getLang(infoString);
         const classAttr = lang
           ? ` class="${options.langPrefix}${escape(lang)}"`
           : '';
@@ -45,8 +45,8 @@ export function markedHighlight(options) {
   };
 }
 
-function getLang(token) {
-  return (token.lang || '').match(/\S*/)[0];
+function getLang(lang) {
+  return (lang || '').match(/\S*/)[0];
 }
 
 function updateToken(token) {
