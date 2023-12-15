@@ -3,6 +3,7 @@ import {expectError} from 'tsd';
 
 // Single function argument
 markedHighlight((code: string, language: string) => code+language);
+markedHighlight((code: string, language: string, info: string) => code+language+info);
 
 // Invalid asynchronous function argument - missing async: true
 expectError(markedHighlight(async (code: string, language: string) => code+language));
@@ -35,6 +36,10 @@ markedHighlight({
 // Minimal asynchronous options argument
 markedHighlight({
   highlight: async (code: string, language: string) => code+language,
+  async: true,
+})
+markedHighlight({
+  highlight: async (code: string, language: string, info: string) => code+language+info,
   async: true,
 })
 

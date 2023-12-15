@@ -174,4 +174,39 @@ no need to escape chars
 
     expect(() => marked(markdown)).toThrow(/set the async option to true/i);
   });
+
+  test('uses infostring', () => {
+    marked.use(markedHighlight({
+      highlight(code, lang, info) {
+        return info;
+      }
+    }));
+
+    expect(marked(`
+\`\`\`ts twoslash
+let a = 1
+\`\`\``)).toMatchInlineSnapshot(`
+"<pre><code class="language-ts">ts twoslash
+</code></pre>"
+`);
+  });
+
+  test('async uses infostring', async() => {
+    marked.use(markedHighlight({
+      async: true,
+      highlight(code, lang, info) {
+        return new Promise((resolve, reject) => {
+          resolve(info);
+        });
+      }
+    }));
+
+    expect(await marked(`
+\`\`\`ts twoslash
+let a = 1
+\`\`\``)).toMatchInlineSnapshot(`
+"<pre><code class="language-ts">ts twoslash
+</code></pre>"
+`);
+  });
 });
