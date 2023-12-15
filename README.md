@@ -18,7 +18,7 @@ import hljs from 'highlight.js';
 const marked = new Marked(
   markedHighlight({
     langPrefix: 'hljs language-',
-    highlight(code, lang) {
+    highlight(code, lang, info) {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
       return hljs.highlight(code, { language }).value;
     }
@@ -46,7 +46,7 @@ import pygmentize from 'pygmentize-bundled';
 const marked = new Marked(
   markedHighlight({
     async: true,
-    highlight(code, lang) {
+    highlight(code, lang, info) {
       return new Promise((resolve, reject) => {
         pygmentize({ lang, format: 'html' }, code, function (err, result) {
           if (err) {

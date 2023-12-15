@@ -23,10 +23,10 @@ export function markedHighlight(options) {
       const lang = getLang(token);
 
       if (options.async) {
-        return Promise.resolve(options.highlight(token.text, lang)).then(updateToken(token));
+        return Promise.resolve(options.highlight(token.text, lang, token.lang || '')).then(updateToken(token));
       }
 
-      const code = options.highlight(token.text, lang);
+      const code = options.highlight(token.text, lang, token.lang || '');
       if (code instanceof Promise) {
         throw new Error('markedHighlight is not set to async but the highlight function is async. Set the async option to true on markedHighlight to await the async highlight function.');
       }

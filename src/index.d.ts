@@ -5,9 +5,11 @@ declare module 'marked-highlight' {
    * @param code The raw code to be highlighted
    * @param language The language tag found immediately after the code block
    *   opening marker (e.g. ```typescript -> language='typescript')
+   * @param info The full string after the code block opening marker
+   *   (e.g. ```ts twoslash -> info='ts twoslash')
    * @return The highlighted code as a HTML string
    */
-  type SyncHighlightFunction = (code: string, language: string) => string;
+  type SyncHighlightFunction = (code: string, language: string, info: string) => string;
 
   /**
    * An asynchronous function to highlight code
@@ -15,9 +17,11 @@ declare module 'marked-highlight' {
    * @param code The raw code to be highlighted
    * @param language The language tag found immediately after the code block
    *   opening marker (e.g. ```typescript -> language='typescript')
+   * @param info The full string after the code block opening marker
+   *   (e.g. ```ts twoslash -> info='ts twoslash')
    * @return A Promise for the highlighted code as a HTML string
    */
-  type AsyncHighlightFunction = (code: string, language: string) => Promise<string>;
+  type AsyncHighlightFunction = (code: string, language: string, info: string) => Promise<string>;
 
   /**
    * Options for configuring the marked-highlight extension using a synchronous

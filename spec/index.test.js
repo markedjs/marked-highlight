@@ -174,4 +174,71 @@ no need to escape chars
 
     expect(() => marked(markdown)).toThrow(/set the async option to true/i);
   });
+
+  const markdownWithSpaceInLang = `
+\`\`\`ts twoslash
+let a = 1
+\`\`\``;
+
+  test('uses infostring', () => {
+    marked.use(markedHighlight({
+      highlight(code, lang, info) {
+        return info;
+      }
+    }));
+
+    expect(marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
+"<pre><code class="language-ts">ts twoslash
+</code></pre>"
+`);
+  });
+
+  test('async uses infostring', async() => {
+    marked.use(markedHighlight({
+      async: true,
+      highlight(code, lang, info) {
+        return new Promise((resolve, reject) => {
+          resolve(info);
+        });
+      }
+    }));
+
+    expect(await marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
+"<pre><code class="language-ts">ts twoslash
+</code></pre>"
+`);
+  });
+
+  const markdownWithoutLang = `
+\`\`\`
+no language provided
+\`\`\`
+`;
+
+  test('nullish infostring is cast to empty string', () => {
+    marked.use(markedHighlight({
+      highlight(code, lang, info) {
+        expect(info).toBe('');
+        return info;
+      }
+    }));
+    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
+"<pre><code>
+</code></pre>"
+`);
+  });
+
+  test('async nullish infostring is cast to empty string', async() => {
+    marked.use(markedHighlight({
+      async: true,
+      highlight(code, lang, info) {
+        expect(info).toBe('');
+        return Promise.resolve(info);
+      }
+    }));
+    expect(await marked(markdownWithoutLang)).toMatchInlineSnapshot(`
+"<pre><code>
+</code></pre>"
+`);
+  });
 });
