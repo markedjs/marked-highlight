@@ -2,7 +2,7 @@
 
 Highlight code blocks
 
-# Usage
+## Usage
 
 You will need to provide a function that transforms the `code` to html.
 
@@ -75,7 +75,7 @@ const highlight = "code";
 // </code></pre>
 ```
 
-## `options`
+### `options`
 
 | option |  type  | default | description |
 |--------|--------|---------|:------------|
