@@ -2,6 +2,12 @@
 
 Highlight code blocks
 
+## Installation
+
+```sh
+npm install marked-highlight
+```
+
 ## Usage
 
 You will need to provide a function that transforms the `code` to html.
