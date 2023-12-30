@@ -7,8 +7,8 @@ Highlight code blocks
 You will need to provide a function that transforms the `code` to html.
 
 ```js
-import {Marked} from "marked";
-import {markedHighlight} from "marked-highlight";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
 
 // or UMD script
@@ -39,8 +39,8 @@ const highlight = "code";
 The `async` option should be set to `true` if the `highlight` function returns a `Promise`.
 
 ```js
-import {Marked} from "marked";
-import {markedHighlight} from "marked-highlight";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
 import pygmentize from 'pygmentize-bundled';
 
 const marked = new Marked(
