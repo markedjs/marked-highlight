@@ -39,7 +39,7 @@ export function markedHighlight(options) {
           ? ` class="${options.langPrefix}${escape(lang)}"`
           : '';
         code = code.replace(/\n$/, '');
-        return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
+        return `<pre><code${classAttr} tabIndex="0">${escaped ? code : escape(code, true)}\n</code></pre>`;
       }
     }
   };

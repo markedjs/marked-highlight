@@ -22,7 +22,7 @@ const highlight = "code";
 don't do this
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<pre><code class="language-don&#39;t"><mycode>don't do this</mycode>
+"<pre><code class="language-don&#39;t" tabIndex="0"><mycode>don't do this</mycode>
 </code></pre>"
 `);
   });
@@ -39,7 +39,7 @@ code
 \`\`\`
 `)).toMatchInlineSnapshot(`
 "<h1>header</h1>
-<pre><code class="language-js"><mycode>code</mycode>
+<pre><code class="language-js" tabIndex="0"><mycode>code</mycode>
 </code></pre>"
 `);
   });
@@ -53,7 +53,7 @@ code
 only keeps first word
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<pre><code class="language-space"><mycode>only keeps first word</mycode>
+"<pre><code class="language-space" tabIndex="0"><mycode>only keeps first word</mycode>
 </code></pre>"
 `);
   });
@@ -67,7 +67,7 @@ only keeps first word
 no language
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<pre><code><mycode>no language</mycode>
+"<pre><code tabIndex="0"><mycode>no language</mycode>
 </code></pre>"
 `);
   });
@@ -81,7 +81,7 @@ no language
 no language
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<pre><code>no language
+"<pre><code tabIndex="0">no language
 </code></pre>"
 `);
   });
@@ -101,7 +101,7 @@ no language
 no need to escape chars
 \`\`\`
 `)).toMatchInlineSnapshot(`
-"<pre><code class="language-js">no need to escape chars
+"<pre><code class="language-js" tabIndex="0">no need to escape chars
 </code></pre>"
 `);
   });
@@ -111,7 +111,7 @@ no need to escape chars
       return null;
     }));
     expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript">const highlight = &quot;code&quot;;
+"<pre><code class="language-javascript" tabIndex="0">const highlight = &quot;code&quot;;
 </code></pre>"
 `);
   });
@@ -121,7 +121,7 @@ no need to escape chars
       return `<mycode>${code}</mycode>`;
     }));
     expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript"><mycode>const highlight = "code";</mycode>
+"<pre><code class="language-javascript" tabIndex="0"><mycode>const highlight = "code";</mycode>
 </code></pre>"
 `);
   });
@@ -135,7 +135,7 @@ no need to escape chars
       }
     }));
     expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> highlight = <span class="hljs-string">&quot;code&quot;</span>;
+"<pre><code class="hljs language-javascript" tabIndex="0"><span class="hljs-keyword">const</span> highlight = <span class="hljs-string">&quot;code&quot;</span>;
 </code></pre>"
 `);
   });
@@ -157,8 +157,7 @@ no need to escape chars
       }
     }));
     expect(await marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript"><div class="highlight"><pre><span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="s2">&quot;code&quot;</span><span class="p">;</span>
-</pre></div>
+"<pre><code class="language-javascript" tabIndex="0">const highlight = &quot;code&quot;;
 </code></pre>"
 `);
   });
@@ -188,7 +187,7 @@ let a = 1
     }));
 
     expect(marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
-"<pre><code class="language-ts">ts twoslash
+"<pre><code class="language-ts" tabIndex="0">ts twoslash
 </code></pre>"
 `);
   });
@@ -204,7 +203,7 @@ let a = 1
     }));
 
     expect(await marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
-"<pre><code class="language-ts">ts twoslash
+"<pre><code class="language-ts" tabIndex="0">ts twoslash
 </code></pre>"
 `);
   });
@@ -223,7 +222,7 @@ no language provided
       }
     }));
     expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code>
+"<pre><code tabIndex="0">
 </code></pre>"
 `);
   });
@@ -237,7 +236,7 @@ no language provided
       }
     }));
     expect(await marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code>
+"<pre><code tabIndex="0">
 </code></pre>"
 `);
   });
