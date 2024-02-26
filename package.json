@@ -64,7 +64,7 @@
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^4.12.0",
     "semantic-release": "^23.0.2",
-    "tsd": "^0.30.5"
+    "tsd": "^0.30.7"
   },
   "tsd": {
     "compilerOptions": {
