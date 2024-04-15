@@ -15,6 +15,7 @@ You will need to provide a function that transforms the `code` to html.
 ```js
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
+import 'highlight.js/styles/default.css';
 import hljs from 'highlight.js';
 
 // or UMD script
