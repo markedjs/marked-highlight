@@ -56,7 +56,7 @@ const marked = new Marked(
       return new Promise((resolve, reject) => {
         pygmentize({ lang, format: 'html' }, code, function (err, result) {
           if (err) {
-            resolve(err);
+            reject(err);
             return;
           }
 
