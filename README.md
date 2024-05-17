@@ -67,7 +67,7 @@ const marked = new Marked(
   })
 )
 
-marked.parse(`
+await marked.parse(`
 \`\`\`javascript
 const highlight = "code";
 \`\`\`
