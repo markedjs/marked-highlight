@@ -34,13 +34,18 @@ export function markedHighlight(options) {
     },
     useNewRenderer: true,
     renderer: {
-      code({ text, lang, escaped }) {
-        const language = getLang(lang);
-        const classAttr = language
-          ? ` class="${options.langPrefix}${escape(language)}"`
+      code(code, infoString, escaped) {
+        if (typeof code === 'object') {
+          escaped = code.escaped;
+          infoString = code.lang;
+          code = code.text;
+        }
+        const lang = getLang(infoString);
+        const classAttr = lang
+          ? ` class="${options.langPrefix}${escape(lang)}"`
           : '';
-        text = text.replace(/\n$/, '');
-        return `<pre><code${classAttr}>${escaped ? text : escape(text, true)}\n</code></pre>`;
+        code = code.replace(/\n$/, '');
+        return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
       }
     }
   };
