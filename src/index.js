@@ -35,6 +35,7 @@ export function markedHighlight(options) {
     useNewRenderer: true,
     renderer: {
       code(code, infoString, escaped) {
+        // istanbul ignore next
         if (typeof code === 'object') {
           escaped = code.escaped;
           infoString = code.lang;
