@@ -6,17 +6,17 @@ export default [
       file: 'lib/index.umd.js',
       format: 'umd',
       globals: {
-        marked: 'marked'
-      }
+        marked: 'marked',
+      },
     },
-    external: ['marked']
+    external: ['marked'],
   },
   {
     input: 'src/index.js',
     output: {
       file: 'lib/index.cjs',
-      format: 'cjs'
+      format: 'cjs',
     },
-    external: ['marked']
-  }
+    external: ['marked'],
+  },
 ];

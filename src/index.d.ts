@@ -46,7 +46,7 @@ declare module 'marked-highlight' {
   /**
    * Options for configuring the marked-highlight extension using an
    * asynchronous highlighting function.
-   * 
+   *
    * Note that the {async: true} option should also be passed to marked.parse()
    * when using an asynchronous highlighting function to tell TypeScript that it
    * will return a Promise.
