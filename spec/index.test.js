@@ -132,7 +132,7 @@ no need to escape chars
       highlight(code, lang) {
         const language = hljs.getLanguage(lang) ? lang : 'plaintext';
         return hljs.highlight(code, { language }).value;
-      }
+      },
     }));
     expect(marked(markdown)).toMatchInlineSnapshot(`
 "<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> highlight = <span class="hljs-string">&quot;code&quot;</span>;
@@ -154,7 +154,7 @@ no need to escape chars
             resolve(result.toString());
           });
         });
-      }
+      },
     }));
     expect(await marked(markdown)).toMatchInlineSnapshot(`
 "<pre><code class="language-javascript"><div class="highlight"><pre><span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="s2">&quot;code&quot;</span><span class="p">;</span>
@@ -169,7 +169,7 @@ no need to escape chars
         return new Promise((resolve, reject) => {
           resolve(code);
         });
-      }
+      },
     }));
 
     expect(() => marked(markdown)).toThrow(/set the async option to true/i);
@@ -184,7 +184,7 @@ let a = 1
     marked.use(markedHighlight({
       highlight(code, lang, info) {
         return info;
-      }
+      },
     }));
 
     expect(marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
@@ -200,7 +200,7 @@ let a = 1
         return new Promise((resolve, reject) => {
           resolve(info);
         });
-      }
+      },
     }));
 
     expect(await marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
@@ -220,7 +220,7 @@ no language provided
       highlight(code, lang, info) {
         expect(info).toBe('');
         return info;
-      }
+      },
     }));
     expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
 "<pre><code>
@@ -234,7 +234,7 @@ no language provided
       highlight(code, lang, info) {
         expect(info).toBe('');
         return Promise.resolve(info);
-      }
+      },
     }));
     expect(await marked(markdownWithoutLang)).toMatchInlineSnapshot(`
 "<pre><code>
