@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/markedjs/marked-highlight#readme",
   "peerDependencies": {
-    "marked": ">=4 <14"
+    "marked": ">=4 <15"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -58,7 +58,7 @@
     "globals": "^15.9.0",
     "highlight.js": "^11.10.0",
     "jest-cli": "^29.7.0",
-    "marked": "^13.0.3",
+    "marked": "^14.0.0",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^4.20.0",
     "semantic-release": "^24.0.0",
