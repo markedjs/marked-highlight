@@ -58,7 +58,7 @@
     "globals": "^15.9.0",
     "highlight.js": "^11.10.0",
     "jest-cli": "^29.7.0",
-    "marked": "^14.0.0",
+    "marked": "^14.1.0",
     "pygmentize-bundled": "^2.3.0",
     "rollup": "^4.21.0",
     "semantic-release": "^24.1.0",
