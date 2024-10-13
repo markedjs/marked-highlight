@@ -241,4 +241,32 @@ no language provided
 </code></pre>"
 `);
   });
+
+  test('nullish infostring is cast to emptyLangClass option', () => {
+    marked.use(markedHighlight({
+      emptyLangClass: 'empty',
+      highlight(code, lang, info) {
+        expect(info).toBe('');
+        return info;
+      },
+    }));
+    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
+"<pre><code class="empty">
+</code></pre>"
+`);
+  });
+
+  test('no class when emptyLangClass is empty string', () => {
+    marked.use(markedHighlight({
+      emptyLangClass: '',
+      highlight(code, lang, info) {
+        expect(info).toBe('');
+        return info;
+      },
+    }));
+    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
+"<pre><code>
+</code></pre>"
+`);
+  });
 });
