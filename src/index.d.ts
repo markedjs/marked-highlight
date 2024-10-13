@@ -41,6 +41,11 @@ declare module 'marked-highlight' {
      * appended to this to form the class attribute added to the <code> element.
      */
     langPrefix?: string;
+    /**
+     * The class attribute added to the <code> element if the language tag is
+     * empty.
+     */
+    emptyLangClass?: string;
   }
 
   /**
@@ -61,6 +66,11 @@ declare module 'marked-highlight' {
      * appended to this to form the class attribute added to the <code> element.
      */
     langPrefix?: string;
+    /**
+     * The class attribute added to the <code> element if the language tag is
+     * empty.
+     */
+    emptyLangClass?: string;
   }
 
   /**
