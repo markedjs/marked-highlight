@@ -23,6 +23,7 @@ import hljs from 'highlight.js';
 // const {markedHighlight} = globalThis.markedHighlight;
 const marked = new Marked(
   markedHighlight({
+	emptyLangClass: 'hljs',
     langPrefix: 'hljs language-',
     highlight(code, lang, info) {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
@@ -87,4 +88,5 @@ const highlight = "code";
 |--------|--------|---------|:------------|
 | async  | boolean | `false` | If the highlight function returns a promise set this to `true`. Don't forget to `await` the call to `marked.parse` |
 | langPrefix | string | `'language-'` | A prefix to add to the class of the `code` tag. |
+| emptyLangClass | string | `''` | The class to add to the `code` tag if the language is empty. |
 | highlight | function | `(code: string, lang: string) => {}` | Required. The function to transform the code to html. |
