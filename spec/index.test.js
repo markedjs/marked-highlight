@@ -1,7 +1,6 @@
 import { marked } from 'marked';
 import { markedHighlight } from '../src/index.js';
 import hljs from 'highlight.js';
-import pygmentize from 'pygmentize-bundled';
 
 describe('markedHighlight', () => {
   const markdown = `
@@ -145,20 +144,14 @@ no need to escape chars
       async: true,
       highlight(code, lang) {
         return new Promise((resolve, reject) => {
-          pygmentize({ lang, format: 'html' }, code, function(err, result) {
-            if (err) {
-              resolve(err);
-              return;
-            }
-
-            resolve(result.toString());
-          });
+          setTimeout(() => {
+            resolve('async code');
+          }, 1);
         });
       },
     }));
     expect(await marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript"><div class="highlight"><pre><span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="s2">&quot;code&quot;</span><span class="p">;</span>
-</pre></div>
+"<pre><code class="language-javascript">async code
 </code></pre>"
 `);
   });
