@@ -20,7 +20,7 @@ import hljs from 'highlight.js';
 // or UMD script
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 // <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
-// const { Marked } = window.marked;
+// const { Marked } = globalThis.marked;
 // const { markedHighlight } = globalThis.markedHighlight;
 const marked = new Marked(
   markedHighlight({
