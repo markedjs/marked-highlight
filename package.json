@@ -56,7 +56,7 @@
     "babel-jest": "^29.7.0",
     "eslint": "^9.16.0",
     "globals": "^15.13.0",
-    "highlight.js": "^11.10.0",
+    "highlight.js": "^11.11.0",
     "jest-cli": "^29.7.0",
     "marked": "^15.0.3",
     "rollup": "^4.28.1",
