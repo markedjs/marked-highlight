@@ -44,7 +44,7 @@
     "marked": ">=4 <17"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.7",
+    "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@markedjs/eslint-config": "^1.0.13",
     "@semantic-release/changelog": "^6.0.3",
