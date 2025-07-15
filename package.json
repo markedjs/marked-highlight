@@ -59,7 +59,7 @@
     "highlight.js": "^11.11.1",
     "jest-cli": "^30.0.4",
     "marked": "^16.0.0",
-    "rollup": "^4.44.2",
+    "rollup": "^4.45.0",
     "semantic-release": "^24.2.7",
     "tsd": "^0.32.0"
   },
