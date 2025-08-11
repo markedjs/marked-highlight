@@ -61,7 +61,7 @@
     "marked": "^16.1.2",
     "rollup": "^4.46.2",
     "semantic-release": "^24.2.7",
-    "tsd": "^0.32.0"
+    "tsd": "^0.33.0"
   },
   "tsd": {
     "compilerOptions": {
