@@ -96,6 +96,6 @@ declare module 'marked-highlight' {
    * @return A MarkedExtension to be passed to `marked.use()`
    */
   export function markedHighlight(
-    highlightFunction: SyncHighlightFunction
+    highlightFunction: SyncHighlightFunction,
   ): import('marked').MarkedExtension;
 }
