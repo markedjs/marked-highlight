@@ -5,8 +5,10 @@ on:
     branches:
       - main
 
-jobs:
+permissions:
+  contents: read
 
+jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +17,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: '*'
+          node-version: "*"
       - name: Install Dependencies
         run: npm ci
       - name: Run Tests 👩🏽‍💻
@@ -29,7 +31,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: '*'
+          node-version: "*"
       - name: Install Dependencies
         run: npm ci
       - name: Run Types Tests 👩🏽‍💻
@@ -43,7 +45,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install Dependencies
         run: npm ci
       - name: Run Tests 👩🏽‍💻
@@ -57,7 +59,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install Dependencies
         run: npm ci
       - name: Lint ✨
@@ -71,13 +73,18 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install Dependencies
         run: npm ci
       - name: Build 🗜️
         run: npm run build
 
   Release:
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for trusted publishing and npm provenance
     needs: [Test, TestTypes, Coverage, Lint, Build]
     if: |
       github.ref == 'refs/heads/main' &&
@@ -89,7 +96,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install Dependencies
         run: npm ci
       - name: Build 🗜️
@@ -103,5 +110,4 @@ jobs:
       - name: Release 🎉
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
