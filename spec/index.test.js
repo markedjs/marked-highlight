@@ -262,4 +262,44 @@ no language provided
 </code></pre>"
 `);
   });
+
+  test('wrapper is not a function', () => {
+    marked.use(markedHighlight({
+      wrapper: 'not a function',
+      highlight(code, lang, info) {
+        return code;
+      },
+    }));
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<pre><code class="language-javascript">const highlight = &quot;code&quot;;
+</code></pre>"
+`);
+  });
+
+  test('wrapper is used when provided', () => {
+    marked.use(markedHighlight({
+      wrapper: x => `<div class="wrapper">${x}</div>`,
+      highlight(code, lang, info) {
+        return code;
+      },
+    }));
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<div class="wrapper"><pre><code class="language-javascript">const highlight = &quot;code&quot;;
+</code></pre></div>"
+`);
+  });
+
+  test('async wrapper is used when provided', async() => {
+    marked.use(markedHighlight({
+      wrapper: x => `<div class="wrapper">${x}</div>`,
+      highlight(code, lang, info) {
+        return code;
+      },
+      async: true,
+    }));
+    expect(await marked(markdown)).toMatchInlineSnapshot(`
+"<div class="wrapper"><pre><code class="language-javascript">const highlight = &quot;code&quot;;
+</code></pre></div>"
+`);
+  });
 });

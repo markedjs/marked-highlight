@@ -46,6 +46,13 @@ declare module 'marked-highlight' {
      * empty.
      */
     emptyLangClass?: string;
+    /**
+      * Receives the highlighted code (including <pre><code> tags).
+      * Returned value is used as the final HTML for the code block.
+      * Useful for wrapping the code block in additional HTML, such
+      * as a div.
+      */
+    wrapper?: (code: string) => string;
   }
 
   /**
@@ -71,6 +78,13 @@ declare module 'marked-highlight' {
      * empty.
      */
     emptyLangClass?: string;
+    /**
+      * Receives the highlighted code (including <pre><code> tags).
+      * Returned value is used as the final HTML for the code block.
+      * Useful for wrapping the code block in additional HTML, such
+      * as a div.
+      */
+    wrapper?: (code: string) => string;
   }
 
   /**

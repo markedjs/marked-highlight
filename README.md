@@ -91,3 +91,4 @@ const highlight = "code";
 | langPrefix | string | `'language-'` | A prefix to add to the class of the `code` tag. |
 | emptyLangClass | string | `''` | The class to add to the `code` tag if the language is empty. |
 | highlight | function | `(code: string, lang: string) => {}` | Required. The function to transform the code to html. |
+| wrapper | function | `(code: string) => code` | Receives the final highlighted code as HTML. Returned value is used as the final HTML.

@@ -17,6 +17,10 @@ export function markedHighlight(options) {
     options.emptyLangClass = '';
   }
 
+  if (typeof options.wrapper !== 'function') {
+    options.wrapper = x => x;
+  }
+
   return {
     async: !!options.async,
     walkTokens(token) {
@@ -51,7 +55,7 @@ export function markedHighlight(options) {
           ? ` class="${classValue}"`
           : '';
         code = code.replace(/\n$/, '');
-        return `<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`;
+        return options.wrapper(`<pre><code${classAttr}>${escaped ? code : escape(code, true)}\n</code></pre>`);
       },
     },
   };
