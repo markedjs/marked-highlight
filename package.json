@@ -54,7 +54,7 @@
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.0",
     "babel-jest": "^30.3.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "globals": "^17.5.0",
     "highlight.js": "^11.11.1",
     "jest-cli": "^30.3.0",
