@@ -58,7 +58,7 @@
     "globals": "^17.6.0",
     "highlight.js": "^11.11.1",
     "jest-cli": "^30.4.2",
-    "marked": "^18.0.4",
+    "marked": "^18.0.5",
     "rollup": "^4.61.1",
     "semantic-release": "^25.0.3",
     "tsd": "^0.33.0"
