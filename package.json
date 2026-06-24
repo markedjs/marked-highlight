@@ -24,8 +24,8 @@
     }
   },
   "scripts": {
-    "test": "jest --verbose",
-    "test:cover": "jest --coverage",
+    "test": "node --test spec/*.test.js",
+    "test:cover": "node --test --experimental-test-coverage spec/*.test.js",
     "test:types": "tsd -t src/index.d.ts -f types_test/index.test-d.ts",
     "lint": "eslint",
     "build": "rollup -c rollup.config.js"
@@ -53,11 +53,9 @@
     "@semantic-release/github": "^12.0.8",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "babel-jest": "^30.3.0",
     "eslint": "^10.5.0",
     "globals": "^17.6.0",
     "highlight.js": "^11.11.1",
-    "jest-cli": "^30.4.2",
     "marked": "^18.0.5",
     "rollup": "^4.62.2",
     "semantic-release": "^25.0.5",

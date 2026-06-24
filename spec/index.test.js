@@ -1,3 +1,5 @@
+import { describe, test, beforeEach } from 'node:test';
+import assert from 'node:assert';
 import { marked } from 'marked';
 import { markedHighlight } from '../src/index.js';
 import hljs from 'highlight.js';
@@ -16,113 +18,97 @@ const highlight = "code";
     marked.use(markedHighlight((code, lang) => {
       return `<mycode>${code}</mycode>`;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 \`\`\`don't
 don't do this
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<pre><code class="language-don&#39;t"><mycode>don't do this</mycode>
-</code></pre>"
-`);
+`), `<pre><code class="language-don&#39;t"><mycode>don't do this</mycode>
+</code></pre>`);
   });
 
   test('not code', () => {
     marked.use(markedHighlight((code, lang) => {
       return `<mycode>${code}</mycode>`;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 # header
 
 \`\`\`js
 code
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<h1>header</h1>
+`), `<h1>header</h1>
 <pre><code class="language-js"><mycode>code</mycode>
-</code></pre>"
-`);
+</code></pre>`);
   });
 
   test('space in language', () => {
     marked.use(markedHighlight((code, lang) => {
       return `<mycode>${code}</mycode>`;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 \`\`\`space in lang
 only keeps first word
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<pre><code class="language-space"><mycode>only keeps first word</mycode>
-</code></pre>"
-`);
+`), `<pre><code class="language-space"><mycode>only keeps first word</mycode>
+</code></pre>`);
   });
 
   test('no language', () => {
     marked.use(markedHighlight((code, lang) => {
       return `<mycode>${code}</mycode>`;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 \`\`\`
 no language
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<pre><code><mycode>no language</mycode>
-</code></pre>"
-`);
+`), `<pre><code><mycode>no language</mycode>
+</code></pre>`);
   });
 
   test('no language return null', () => {
     marked.use(markedHighlight((code, lang) => {
       return null;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 \`\`\`
 no language
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<pre><code>no language
-</code></pre>"
-`);
+`), `<pre><code>no language
+</code></pre>`);
   });
 
   test('no function', () => {
-    expect(() => {
+    assert.throws(() => {
       marked.use(markedHighlight());
-    }).toThrow('Must provide highlight function');
+    }, /Must provide highlight function/);
   });
 
   test('return null no escape chars', () => {
     marked.use(markedHighlight((code, lang) => {
       return null;
     }));
-    expect(marked(`
+    assert.strictEqual(marked(`
 \`\`\`js
 no need to escape chars
 \`\`\`
-`)).toMatchInlineSnapshot(`
-"<pre><code class="language-js">no need to escape chars
-</code></pre>"
-`);
+`), `<pre><code class="language-js">no need to escape chars
+</code></pre>`);
   });
 
   test('return null', () => {
     marked.use(markedHighlight((code, lang) => {
       return null;
     }));
-    expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript">const highlight = &quot;code&quot;;
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdown), `<pre><code class="language-javascript">const highlight = &quot;code&quot;;
+</code></pre>`);
   });
 
   test('function', () => {
     marked.use(markedHighlight((code, lang) => {
       return `<mycode>${code}</mycode>`;
     }));
-    expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript"><mycode>const highlight = "code";</mycode>
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdown), `<pre><code class="language-javascript"><mycode>const highlight = "code";</mycode>
+</code></pre>`);
   });
 
   test('sync', () => {
@@ -133,10 +119,8 @@ no need to escape chars
         return hljs.highlight(code, { language }).value;
       },
     }));
-    expect(marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> highlight = <span class="hljs-string">&quot;code&quot;</span>;
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdown), `<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> highlight = <span class="hljs-string">&quot;code&quot;</span>;
+</code></pre>`);
   });
 
   test('async', async() => {
@@ -150,10 +134,8 @@ no need to escape chars
         });
       },
     }));
-    expect(await marked(markdown)).toMatchInlineSnapshot(`
-"<pre><code class="language-javascript">async code
-</code></pre>"
-`);
+    assert.strictEqual(await marked(markdown), `<pre><code class="language-javascript">async code
+</code></pre>`);
   });
 
   test('async highlight without async option', async() => {
@@ -165,7 +147,7 @@ no need to escape chars
       },
     }));
 
-    expect(() => marked(markdown)).toThrow(/set the async option to true/i);
+    assert.throws(() => marked(markdown), /set the async option to true/i);
   });
 
   const markdownWithSpaceInLang = `
@@ -180,10 +162,8 @@ let a = 1
       },
     }));
 
-    expect(marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
-"<pre><code class="language-ts">ts twoslash
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdownWithSpaceInLang), `<pre><code class="language-ts">ts twoslash
+</code></pre>`);
   });
 
   test('async uses infostring', async() => {
@@ -196,10 +176,8 @@ let a = 1
       },
     }));
 
-    expect(await marked(markdownWithSpaceInLang)).toMatchInlineSnapshot(`
-"<pre><code class="language-ts">ts twoslash
-</code></pre>"
-`);
+    assert.strictEqual(await marked(markdownWithSpaceInLang), `<pre><code class="language-ts">ts twoslash
+</code></pre>`);
   });
 
   const markdownWithoutLang = `
@@ -211,55 +189,47 @@ no language provided
   test('nullish infostring is cast to empty string', () => {
     marked.use(markedHighlight({
       highlight(code, lang, info) {
-        expect(info).toBe('');
+        assert.strictEqual(info, '');
         return info;
       },
     }));
-    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code>
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdownWithoutLang), `<pre><code>
+</code></pre>`);
   });
 
   test('async nullish infostring is cast to empty string', async() => {
     marked.use(markedHighlight({
       async: true,
       highlight(code, lang, info) {
-        expect(info).toBe('');
+        assert.strictEqual(info, '');
         return Promise.resolve(info);
       },
     }));
-    expect(await marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code>
-</code></pre>"
-`);
+    assert.strictEqual(await marked(markdownWithoutLang), `<pre><code>
+</code></pre>`);
   });
 
   test('nullish infostring is cast to emptyLangClass option', () => {
     marked.use(markedHighlight({
       emptyLangClass: 'empty',
       highlight(code, lang, info) {
-        expect(info).toBe('');
+        assert.strictEqual(info, '');
         return info;
       },
     }));
-    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code class="empty">
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdownWithoutLang), `<pre><code class="empty">
+</code></pre>`);
   });
 
   test('no class when emptyLangClass is empty string', () => {
     marked.use(markedHighlight({
       emptyLangClass: '',
       highlight(code, lang, info) {
-        expect(info).toBe('');
+        assert.strictEqual(info, '');
         return info;
       },
     }));
-    expect(marked(markdownWithoutLang)).toMatchInlineSnapshot(`
-"<pre><code>
-</code></pre>"
-`);
+    assert.strictEqual(marked(markdownWithoutLang), `<pre><code>
+</code></pre>`);
   });
 });
