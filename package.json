@@ -54,7 +54,7 @@
     "eslint": "^10.6.0",
     "globals": "^17.7.0",
     "highlight.js": "^11.11.1",
-    "marked": "^18.0.5",
+    "marked": "^18.0.6",
     "rollup": "^4.62.2",
     "semantic-release": "^25.0.5",
     "tsd": "^0.33.0"
