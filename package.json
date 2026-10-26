@@ -55,7 +55,7 @@
     "globals": "^17.13.0",
     "highlight.js": "^11.12.0",
     "marked": "^18.1.1",
-    "rollup": "^4.64.7",
+    "rollup": "^4.65.0",
     "semantic-release": "^25.0.9",
     "tsd": "^0.33.0"
   },
